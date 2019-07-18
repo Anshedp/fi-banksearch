@@ -1,0 +1,37 @@
+body {
+	background-color: azure;
+}
+.body_wrapper {
+	width: 100%;
+	float: left;
+}
+.body_inner {
+	margin: auto;
+	width: 1200px;
+}
+.header_wrapper {
+	margin-top: 20px;
+	float: left;
+	width: 100%;
+	margin-bottom: 40px;
+}
+.header_inner {
+	margin: auto;
+	width: 1000px;
+	text-align: center;
+	font-size: 40px;
+}
+.key_wrapper {
+	width: 100%;
+	margin-bottom: 40px;
+}
+.key_inner {
+	font-size: 20px;
+}
+#selectcity {
+	font-size: 20px;
+	float: left;
+}
+div.dataTables_wrapper div.dataTables_filter {
+	float: left;
+}

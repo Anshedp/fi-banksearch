@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>BANK SEARCH</title>
+		<link type="icon" href="./fyle-images/logo.png" />
+		
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.datatables.net/v/bs-3.3.7/dt-1.10.18/datatables.min.css"
+		/>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<div class="body_wrapper">
+			<div class="body_inner">
+				<div class="header_wrapper">
+					<div class="header_inner">
+						Bank Branches
+					</div>
+				</div>
+				<div class="key_wrapper">
+					<div class="key_inner">
+						<div id="blr">
+							<div id="selectcity">Select city:</div>
+							<select id="cities">
+								<option value="MUMBAI">MUMBAI</option>
+								<option value="BANGALORE">BANGALORE</option>
+								<option value="DELHI">DELHI</option>
+								<option value="PUNE">PUNE</option>
+								<option value="CHENNAI">CHENNAI</option>
+								<option value="KOLKATTA">KOLKATTA</option>
+								<option value="KOZHIKODE">KOZHIKODE</option>
+								<option value="MYSORE">MYSORE</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<table id="myTable" class="table table-striped">
+					<thead>
+						<tr>
+							<th>ifsc</th>
+							<th>bank_id</th>
+							<th>branch</th>
+							<th>address</th>
+							<th>city</th>
+							<th>district</th>
+							<th>state</th>
+							<th>bank_name</th>
+						</tr>
+					</thead>
+				</table>
+
+				
+
+				<script src="js/jquery.min.js"></script>
+				
+				<script
+					type="text/javascript"
+					src="https://cdn.datatables.net/v/bs-3.3.7/dt-1.10.18/datatables.min.js"
+				></script>
+			
+				<script>
+					
+					$(document).ready(function() {
+						var selectedValue = "";
+						function getSelectValue() {
+							selectedValue = document.getElementById("cities").value;
+							populateData();
+						}
+
+						$("#cities").on("change", function() {
+							getSelectValue();
+						});
+
+						function populateData() {
+							$("#myTable").DataTable({
+								processing: true,
+								bDestroy: true,
+								ajax: {
+									url:
+										"https://vast-shore-74260.herokuapp.com/banks?city=" +
+										selectedValue,
+									dataSrc: ""
+								},
+								columns: [
+									{ data: "ifsc" },
+									{ data: "bank_id" },
+									{ data: "branch" },
+									{ data: "address" },
+									{ data: "city" },
+									{ data: "district" },
+									{ data: "state" },
+									{ data: "bank_name" }
+								]
+							});
+						}
+
+						getSelectValue();
+					});
+				</script>
+			</div>
+		</div>
+	</body>
+</html>
